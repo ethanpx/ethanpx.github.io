@@ -1,0 +1,1 @@
+export type IconNames = 'ant-design' | 'chatting' | 'chrome' | 'connection' | 'cubes' | 'dapp' | 'diagram' | 'eth' | 'expo' | 'figma' | 'git-branch' | 'github' | 'go' | 'layers' | 'linkedin' | 'mongodb' | 'mouse-scroll' | 'node' | 'optimization' | 'package' | 'react' | 'settings' | 'tailwindcss' | 'typescript' | 'vs-code' | 'worker' | 'workflow' | 'zustand';

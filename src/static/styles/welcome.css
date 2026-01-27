@@ -1,0 +1,6 @@
+.welcome {
+  @apply flex flex-col gap-6 items-center justify-center transition-all duration-500;
+}
+/* body *:has(.header-sticky) .welcome {
+  @apply opacity-0;
+} */

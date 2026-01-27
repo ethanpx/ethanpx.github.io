@@ -1,0 +1,294 @@
+@import './header.css';
+@import './wheel-slide.css';
+@import './welcome.css';
+@import './parallax.css';
+
+@import 'tailwindcss';
+@plugin "daisyui";
+
+/* just testing  - theme configs */
+@plugin "daisyui/theme" {
+  name: 'dark';
+  default: true;
+  --color-primary: #b2e77b;
+  --color-primary-content: #a3e96b;
+  --color-secondary: #abb1ba;
+  --color-base-300: #141510;
+  --color-base-200: #1e221b;
+  --color-base-100: #3e3e3e;
+  --color-neutral: #282b31;
+}
+
+@plugin "daisyui/theme" {
+  name: 'light';
+  default: false;
+  --color-primary: blue;
+  --color-secondary: cyan;
+  --color-base-300: #eee;
+  --color-neutral: #282b31;
+
+  /* --color-primary-content: #000;
+  --color-secondary-content: #000;
+  --color-accent: #000;
+  --color-accent-content: #000;
+  --color-neutral: #000;
+  --color-neutral-content: #000;
+  --color-base-100: #000;
+  --color-base-200: #000;
+  --color-base-300: #000;
+  --color-base-content: #000;
+  --color-info: #000;
+  --color-info-content: #000;
+  --color-success: #000;
+  --color-success-content: #000;
+  --color-warning: #000;
+  --color-warning-content: #000;
+  --color-error: #000;
+  --color-error-content: #000;
+  --radius-selector: #000;
+  --radius-field: #000;
+  --radius-box: #000;
+  --size-selector: #000;
+  --size-field: #000;
+  --border: #000;
+  --depth: #000;
+  --noise: #000; */
+}
+
+/* components configs */
+@layer components {
+  .card {
+    @apply border border-base-100 rounded-none! bg-base-200!;
+  }
+
+  .input {
+    @apply border-base-300;
+  }
+
+  .btn {
+    @apply rounded-none!;
+  }
+
+  .modal-box {
+    @apply relative p-0! overflow-visible! bg-base-300! rounded-none!;
+  }
+}
+
+body {
+  @apply normal-case;
+  font-family: 'Geist Mono', monospace;
+  /* font-family: 'Tomorrow', sans-serif; */
+  /* font-family: 'Space Grotesk', sans-serif; */
+  /* font-family: 'Inter', sans-serif; */
+}
+
+body:has(.scroll-not-allow) {
+  @apply overflow-hidden;
+}
+
+.font-tomorrow {
+  font-family: 'Tomorrow', sans-serif;
+}
+
+.font-space {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.section-container {
+  @apply px-4 md:px-8 py-8 md:py-16 border-y border-base-100;
+}
+
+.btn-primary {
+  @apply border-0 p-2 bg-[#B2E77B] text-black shadow-none;
+}
+
+.btn-secondary {
+  @apply flex items-center justify-center py-4 border border-[#3E3E3E] bg-[#171E17];
+}
+
+.gradient-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-hover::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #a3e96b 100%);
+  transition: height 0.4s ease-in-out;
+  z-index: 1;
+}
+
+.gradient-hover:hover::before {
+  height: 100%;
+}
+
+.anim-press {
+  @apply scale-90 translate-y-1.5 origin-bottom;
+}
+
+/* modal */
+.modal-header,
+.modal-body {
+  @apply relative;
+}
+
+.modal-header::after {
+  --md-dot-width: 5px;
+  --md-border-offset-s: 2px;
+  --md-border-offset-d: 12px;
+  --md-border-size-short: 1px;
+  --md-border-size-long: calc(100% - 24px);
+  content: '';
+  @apply absolute top-0 left-0 inset-0 pointer-events-none bg-no-repeat;
+  /* background dot */
+  background:
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0% top
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right 0% top
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0% bottom
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right 0%
+      bottom 0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    /* background line */
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-d) top var(--md-border-offset-s) /
+      var(--md-border-size-long) var(--md-border-size-short) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-d) bottom var(--md-border-offset-s) /
+      var(--md-border-size-long) var(--md-border-size-short) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right
+      var(--md-border-offset-s) top var(--md-border-offset-d) /
+      var(--md-border-size-short) var(--md-border-size-long) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-s) top var(--md-border-offset-d) /
+      var(--md-border-size-short) var(--md-border-size-long) no-repeat;
+}
+
+.modal-body::after {
+  --md-dot-width: 5px;
+  --md-border-offset-s: 2px;
+  --md-border-offset-d: 12px;
+  --md-border-size-short: 1px;
+  --md-border-size-long: calc(100% - 24px);
+  content: '';
+  @apply absolute top-0 left-0 inset-0 pointer-events-none bg-no-repeat;
+  /* background dot */
+  background:
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0% top
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right 0% top
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0% bottom
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right 0%
+      bottom 0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    /* background line */
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-d) top var(--md-border-offset-s) /
+      var(--md-border-size-long) var(--md-border-size-short) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-d) bottom var(--md-border-offset-s) /
+      var(--md-border-size-long) var(--md-border-size-short) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right
+      var(--md-border-offset-s) top var(--md-border-offset-d) /
+      var(--md-border-size-short) var(--md-border-size-long) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-s) top var(--md-border-offset-d) /
+      var(--md-border-size-short) var(--md-border-size-long) no-repeat;
+}
+
+.modal-box:has(.modal-header) .modal-body::after {
+  /* background dot */
+  background:
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0% bottom
+      0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right 0%
+      bottom 0% / var(--md-dot-width) var(--md-dot-width) no-repeat,
+    /* background line */
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-d) bottom var(--md-border-offset-s) /
+      var(--md-border-size-long) var(--md-border-size-short) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) right
+      var(--md-border-offset-s) top var(--md-border-offset-d) /
+      var(--md-border-size-short) var(--md-border-size-long) no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left
+      var(--md-border-offset-s) top var(--md-border-offset-d) /
+      var(--md-border-size-short) var(--md-border-size-long) no-repeat;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.plus-suffix {
+  @apply relative;
+}
+
+.plus-suffix::before,
+.plus-suffix::after {
+  @apply absolute w-6 h-6 pointer-events-none z-[1000];
+}
+
+.plus-suffix::before {
+  content: '';
+  @apply -translate-x-1/2 text-base-content;
+  background:
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0 top
+      50% / 100% 3px no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 50% top
+      0 / 3px 100% no-repeat;
+}
+
+.plus-suffix::after {
+  content: '';
+  @apply translate-x-1/2 text-base-content;
+  background:
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 0 top
+      50% / 100% 3px no-repeat,
+    linear-gradient(var(--color-base-100), var(--color-base-100)) left 50% top
+      0 / 3px 100% no-repeat;
+}
+
+.plus-suffix.header-suffix::before {
+  @apply bottom-0 left-0 translate-y-1/2;
+}
+
+.plus-suffix.header-suffix::after {
+  @apply bottom-0 right-0 translate-y-1/2;
+}
+
+.plus-suffix.footer-suffix::before {
+  @apply top-0 left-0 -translate-y-1/2;
+}
+
+.plus-suffix.footer-suffix::after {
+  @apply top-0 right-0 -translate-y-1/2;
+}
+
+.bg-repeating {
+  --bg-color: #141510;
+  --line-color: #3e3e3e3d;
+  --line-deg: 115deg;
+  background-color: var(--bg-color);
+  background-image: repeating-linear-gradient(
+    var(--line-deg),
+    var(--line-color) 0 1px,
+    transparent 1px 8px
+  );
+}
+
+.bg-repeating.bg-repeating-body {
+  --bg-color: #121212;
+}

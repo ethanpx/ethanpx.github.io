@@ -1,0 +1,27 @@
+.wheel-scene {
+  @apply relative h-auto;
+  perspective: 1000px;
+}
+.wheel-slide {
+  @apply absolute top-0 left-0 w-full h-full p-4 transition-all duration-700;
+  transform-style: preserve-3d;
+}
+.wheel-slide_item {
+  --shadow-color:
+    0 0 0 1px rgba(45, 212, 191, 0.25), 0 0 18px rgba(45, 212, 191, 0.6);
+  @apply absolute top-2.5 left-2.5 w-[calc(100%-20px)] h-[calc(100%-20px)] bg-[#000000aa] border border-[#2DD4BF] hover:border-[#FACC15] transition-all duration-700;
+  box-shadow: var(--shadow-color);
+}
+.wheel-slide_item.expert {
+  --shadow-color:
+    0 0 0 1px rgba(45, 212, 191, 0.25), 0 0 18px rgba(45, 212, 191, 0.6);
+}
+.wheel-slide_item.advanced {
+  --shadow-color:
+    0 0 0 1px rgba(96, 165, 250, 0.22), 0 0 16px rgba(96, 165, 250, 0.6),
+    0 16px 50px rgba(0, 0, 0, 0.55);
+}
+.wheel-slide_item.working {
+  --shadow-color:
+    0 0 0 1px rgba(55, 65, 81, 0.35), 0 10px 40px rgba(0, 0, 0, 0.5);
+}

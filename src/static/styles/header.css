@@ -1,0 +1,32 @@
+.h-container {
+  @apply relative flex flex-col justify-center md:justify-start bg-[#000000ca] min-h-24;
+}
+
+.h-avatar {
+  @apply w-14 md:w-16 h-14 md:h-16 rounded-full;
+}
+
+.h-desc {
+  @apply flex gap-1 whitespace-nowrap flex-nowrap max-w-0 transition-all origin-left overflow-hidden;
+}
+
+.h-info {
+  @apply relative flex flex-row gap-4 p-4 place-content-center opacity-0 scale-75;
+}
+
+.h-helo-text {
+  @apply absolute inset-0 top-0 left-0 transition-all duration-500 origin-bottom pointer-events-none z-10;
+  @apply flex flex-col justify-center items-center;
+}
+
+.h-container.header-sticky .h-helo-text {
+  @apply opacity-0 scale-95;
+}
+
+.h-container.header-sticky .h-info {
+  @apply opacity-100 scale-100;
+}
+
+.h-container.header-sticky .h-desc {
+  @apply max-w-full;
+}
