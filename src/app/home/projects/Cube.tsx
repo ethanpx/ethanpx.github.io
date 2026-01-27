@@ -42,64 +42,54 @@ export function Cube() {
       cancelAnimationFrame(raf)
       raf = requestAnimationFrame(() => {
         const { x, y } = rotRef.current
-
-        // ✅ Perspective đưa vào transform matrix
         el.style.transform = `
-          perspective(1000px)
-          rotateX(${x}deg)
-          rotateY(${y}deg)
-        `
+        perspective(1000px)
+        rotateX(${x}deg)
+        rotateY(${y}deg)
+      `
       })
     }
 
-    const onMouseMove = (e: MouseEvent) => {
+    const onPointerMove = (e: PointerEvent) => {
       if (!draggingRef.current) return
-
       const dx = e.clientX - startRef.current.x
       const dy = e.clientY - startRef.current.y
-
+      // giữ nguyên hướng xoay của mày
       rotRef.current.x += dy * SPEED * -1
       rotRef.current.y += dx * SPEED * 1
-
       startRef.current = { x: e.clientX, y: e.clientY }
-
       apply()
     }
 
-    const onMouseUp = () => {
+    const onPointerUp = (e: PointerEvent) => {
       draggingRef.current = false
       el.style.transition = 'transform 0.6s ease'
-
       rotRef.current.x %= 360
       rotRef.current.y %= 360
-
       apply()
-
-      window.removeEventListener('mousemove', onMouseMove)
-      window.removeEventListener('mouseup', onMouseUp)
+      el.releasePointerCapture(e.pointerId)
+      window.removeEventListener('pointermove', onPointerMove)
+      window.removeEventListener('pointerup', onPointerUp)
     }
-
-    const onMouseDown = (e: MouseEvent) => {
+    const onPointerDown = (e: PointerEvent) => {
       e.preventDefault()
       draggingRef.current = true
       startRef.current = { x: e.clientX, y: e.clientY }
       el.style.transition = 'none'
-
-      window.addEventListener('mousemove', onMouseMove)
-      window.addEventListener('mouseup', onMouseUp)
+      // 🔥 cực quan trọng cho mobile
+      el.setPointerCapture(e.pointerId)
+      window.addEventListener('pointermove', onPointerMove)
+      window.addEventListener('pointerup', onPointerUp)
     }
-
-    el.addEventListener('mousedown', onMouseDown)
-
+    el.addEventListener('pointerdown', onPointerDown)
     apply()
-
     return () => {
-      el.removeEventListener('mousedown', onMouseDown)
+      el.removeEventListener('pointerdown', onPointerDown)
     }
   }, [])
 
   return (
-    <div className="relative p-4 size-fit transition-all">
+    <div className="relative p-4 size-fit transition-all touch-none select-none">
       <div
         ref={elRef}
         className="relative aspect-square will-change-transform"
