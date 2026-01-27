@@ -15,4 +15,4 @@ const typeContent = `export type IconNames = ${iconNames
 const typeFilePath = path.join(process.cwd(), 'src/constant/icon.type.ts')
 fs.writeFileSync(typeFilePath, typeContent)
 
-console.log(`Type IconNames is created! File: file://${typeFilePath}`)
+console.log(`Created successfully! Here your file: file://${typeFilePath}`)
