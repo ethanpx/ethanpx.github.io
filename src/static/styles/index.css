@@ -1,7 +1,6 @@
 @import './header.css';
 @import './wheel-slide.css';
 @import './welcome.css';
-@import './parallax.css';
 
 @import 'tailwindcss';
 @plugin "daisyui";
