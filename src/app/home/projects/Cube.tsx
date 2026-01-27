@@ -141,7 +141,7 @@ export function Cube() {
 
 export default function CubeContainer() {
   return (
-    <div className="flex flex-col md:flex-row flex-wrap justify-center gap-4">
+    <div className="flex flex-col md:flex-row flex-wrap items-center justify-center gap-4">
       {[...Array(9)].map((_, i) => (
         <Cube key={i} />
       ))}
