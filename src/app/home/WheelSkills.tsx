@@ -41,7 +41,7 @@ export default function WheelSkills() {
 
   return (
     <div className="relative min-h-[200vh] -mt-[100vh] z-0">
-      <div className="sticky top-24 flex flex-col items-center justify-center gap-4 h-screen">
+      <div className="sticky top-24 max-w-dvw h-screen flex flex-col items-center justify-center gap-4 overflow-x-hidden">
         <div
           className="wheel-scene"
           style={{ width: ITEM_WIDTH, aspectRatio: ASPECT_RATIO }}

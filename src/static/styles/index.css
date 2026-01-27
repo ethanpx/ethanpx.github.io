@@ -74,7 +74,7 @@
 }
 
 body {
-  @apply normal-case;
+  @apply normal-case overflow-x-hidden;
   font-family: 'Geist Mono', monospace;
   /* font-family: 'Tomorrow', sans-serif; */
   /* font-family: 'Space Grotesk', sans-serif; */
