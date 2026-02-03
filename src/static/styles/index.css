@@ -76,6 +76,7 @@
 body {
   @apply normal-case overflow-x-hidden;
   font-family: 'Geist Mono', monospace;
+  overscroll-behavior: none;
   /* font-family: 'Tomorrow', sans-serif; */
   /* font-family: 'Space Grotesk', sans-serif; */
   /* font-family: 'Inter', sans-serif; */
