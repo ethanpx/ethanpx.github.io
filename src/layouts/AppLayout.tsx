@@ -10,7 +10,7 @@ const AppLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col bg-repeating bg-repeating-body">
       <HeaderLayout />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 -mt-24">{children}</main>
       <FooterLayout />
     </div>
   )
