@@ -4,8 +4,8 @@ export default function ErrorBoundary() {
   const error = useRouteError()
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center text-black">
-      <div className="flex flex-col gap-4 max-w-[35rem] border border-black bg-white rounded-xl p-4 text-center">
+    <div className="w-full h-dvh flex flex-col items-center justify-center text-black">
+      <div className="flex flex-col gap-4 max-w-140 border border-black bg-white rounded-xl p-4 text-center">
         <div className="flex flex-col gap-2 items-center justify-center">
           <img src="/imgs/system/er-bear.png" className="w-20 object-contain" />
           <h4 className="text-base md:text-2xl">
