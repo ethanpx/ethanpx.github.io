@@ -237,7 +237,7 @@ input[type='number'] {
 
 .plus-suffix::before,
 .plus-suffix::after {
-  @apply absolute w-6 h-6 pointer-events-none z-[1000];
+  @apply absolute w-6 h-6 pointer-events-none z-1000;
 }
 
 .plus-suffix::before {

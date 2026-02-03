@@ -53,7 +53,7 @@ function HeaderLayout() {
                 <div className="w-1 self-stretch bg-base-100" />
                 <Link
                   className="flex flex-row gap-1 px-1 rounded-xs bg-secondary text-neutral"
-                  to="https://github.com/thiennv-qng"
+                  to="https://github.com/ethanpx"
                   target="_blank"
                 >
                   <SVGIcon
@@ -61,7 +61,7 @@ function HeaderLayout() {
                     size={14}
                     name="github"
                   />
-                  thiennv-qng
+                  ethanpx
                 </Link>
                 <span className="font-light">|</span>
                 <Link

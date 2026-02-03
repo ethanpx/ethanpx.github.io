@@ -1,7 +1,9 @@
-import SVGIcon from '@/components/UIs/SVGIcon'
-import { SKILLS } from '@/constant/skills'
+import { useMemo, useState } from 'react'
 import clsx from 'clsx'
-import { useLayoutEffect, useMemo, useState } from 'react'
+
+import SVGIcon from '@/components/UIs/SVGIcon'
+
+import { SkillLevel, SKILLS } from '@/constant/skills'
 
 const ITEM_WIDTH = 320 // in px
 const ASPECT_RATIO = 4 / 3
@@ -9,7 +11,7 @@ type WheelDirector = 'vertical' | 'horizontal'
 
 export default function WheelSkills() {
   const [step, setStep] = useState(1)
-  const [director, setDirector] = useState<WheelDirector>('horizontal')
+  const [director] = useState<WheelDirector>('horizontal')
 
   const count = useMemo(() => SKILLS.length, [])
 
@@ -25,19 +27,13 @@ export default function WheelSkills() {
     return director === 'horizontal' ? 'rotateY' : 'rotateX'
   }, [director])
 
-  useLayoutEffect(() => {
-    const interval = setInterval(() => {
-      setStep((prev) => (prev + 1) % count)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [count])
+  const onNext = () => {
+    setStep((prev) => prev + 1)
+  }
 
-  useLayoutEffect(() => {
-    const interval = setInterval(() => {
-      setDirector((prev) => (prev === 'horizontal' ? 'vertical' : 'horizontal'))
-    }, 9000)
-    return () => clearInterval(interval)
-  }, [])
+  const onPrev = () => {
+    setStep((prev) => prev - 1)
+  }
 
   return (
     <div className="relative min-h-[200vh] -mt-[100vh] z-0">
@@ -49,21 +45,21 @@ export default function WheelSkills() {
           <div
             className="wheel-slide"
             style={{
-              transform: `translateZ(-${tz}px) ${dir}(${360 - step * deg}deg)`,
+              transform: `translateZ(-${tz}px) ${dir}(${-step * deg}deg)`,
             }}
           >
             {SKILLS.map((s, i) => (
               <div
                 key={i}
                 className={clsx('wheel-slide_item', {
-                  expert: i > 3 && i <= 6,
-                  advanced: i < 3,
-                  working: i > 6,
+                  expert: s.level === SkillLevel.EXPERT,
+                  advanced: s.level === SkillLevel.ADVANCED,
+                  working: s.level === SkillLevel.WORKING,
                 })}
                 style={{
                   transform: `${dir}(${i * deg}deg) translateZ(${tz}px)`,
                   filter:
-                    step === i
+                    ((step % count) + count) % count === i
                       ? 'none'
                       : 'blur(1.5px) grayscale(1) brightness(0.7)',
                 }}
@@ -86,6 +82,15 @@ export default function WheelSkills() {
               </div>
             ))}
           </div>
+        </div>
+        {/* controls */}
+        <div className="w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-row items-center justify-between">
+          <button>
+            <SVGIcon size={38} name="chevron-left" onClick={onPrev} />
+          </button>
+          <button className="ml-4">
+            <SVGIcon size={38} name="chevron-right" onClick={onNext} />
+          </button>
         </div>
       </div>
       <div

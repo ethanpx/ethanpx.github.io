@@ -1,6 +1,6 @@
 import { IconNames } from './icon.type'
 
-enum SkillLevel {
+export enum SkillLevel {
   EXPERT = 'expert',
   ADVANCED = 'advanced',
   WORKING = 'working',
