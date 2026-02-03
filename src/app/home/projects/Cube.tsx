@@ -73,6 +73,7 @@ export function Cube({ imgKey }: CubeProps) {
 
     const onPointerMove = (e: PointerEvent) => {
       if (!draggingRef.current) return
+      e.preventDefault()
       const dx = e.clientX - startRef.current.x
       const dy = e.clientY - startRef.current.y
       // giữ nguyên hướng xoay của mày
@@ -97,7 +98,6 @@ export function Cube({ imgKey }: CubeProps) {
       draggingRef.current = true
       startRef.current = { x: e.clientX, y: e.clientY }
       el.style.transition = 'none'
-      // 🔥 cực quan trọng cho mobile
       el.setPointerCapture(e.pointerId)
       window.addEventListener('pointermove', onPointerMove)
       window.addEventListener('pointerup', onPointerUp)
@@ -113,7 +113,7 @@ export function Cube({ imgKey }: CubeProps) {
     <div className="relative p-4 size-fit transition-all touch-none select-none">
       <div
         ref={elRef}
-        className="relative aspect-square will-change-transform cursor-grab active:cursor-grabbing"
+        className="relative aspect-square will-change-transform cursor-grab active:cursor-grabbing touch-none"
         style={{
           width: size,
           transformStyle: 'preserve-3d',
