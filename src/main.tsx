@@ -5,7 +5,7 @@ import App from './App.tsx'
 
 import '@/static/styles/index.css'
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById('app-root')!).render(
   <StrictMode>
     <App />
   </StrictMode>,

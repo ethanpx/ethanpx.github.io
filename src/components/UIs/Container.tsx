@@ -1,12 +1,17 @@
-import { type PropsWithChildren } from 'react'
+import { Ref, type PropsWithChildren } from 'react'
 
 export default function Container({
+  ref,
   children,
   className,
   innerClassName,
-}: { className?: string; innerClassName?: string } & PropsWithChildren) {
+}: {
+  className?: string
+  innerClassName?: string
+  ref?: Ref<HTMLDivElement | null>
+} & PropsWithChildren) {
   return (
-    <div className={`flex flex-col w-full items-center ${className}`}>
+    <div ref={ref} className={`flex flex-col w-full items-center ${className}`}>
       <div
         className={`w-full max-w-7xl border-x border-neutral ${innerClassName}`}
       >

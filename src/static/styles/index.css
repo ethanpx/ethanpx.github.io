@@ -74,7 +74,7 @@
 }
 
 body {
-  @apply normal-case overflow-x-hidden;
+  @apply normal-case overflow-hidden overscroll-none;
   font-family: 'Geist Mono', monospace;
   overscroll-behavior: none;
   /* font-family: 'Tomorrow', sans-serif; */
@@ -85,7 +85,13 @@ body {
 body:has(.scroll-not-allow) {
   @apply overflow-hidden;
 }
+#viewport {
+  @apply fixed inset-0 overflow-hidden;
+}
 
+#app-root {
+  @apply will-change-transform;
+}
 .font-tomorrow {
   font-family: 'Tomorrow', sans-serif;
 }

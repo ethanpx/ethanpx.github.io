@@ -6,26 +6,17 @@ import SVGIcon from '@/components/UIs/SVGIcon'
 
 import { AVATAR_URL } from '@/constant'
 import { useStickyObserver } from '@/hooks/useSticky'
+import { useFakeSticky } from '@/hooks/useFakeSticky'
 
 function HeaderLayout() {
+  const parentElmRef = useRef<HTMLDivElement | null>(null)
   const elmRef = useRef<HTMLDivElement | null>(null)
   useStickyObserver(elmRef, 'header-sticky')
-
-  // const stickyRatio = useMemo(() => {
-  //   if (!distance) return 1;
-  //   return 1 - Math.min(Math.floor(distance / 400), 0.6);
-  // }, [distance])
-
-  // const scaleable = useMemo(() => {
-  //   return stickyRatio < 0.7;
-  // }, [stickyRatio])
+  useFakeSticky(parentElmRef, -0.5)
 
   return (
-    // <Container
-    //   className="sticky -top-0.5 border-b border-neutral z-999"
-    //   innerClassName="plus-suffix header-suffix"
-    // >
     <Container
+      ref={parentElmRef}
       className="border-b border-neutral z-999"
       innerClassName="plus-suffix header-suffix"
     >
