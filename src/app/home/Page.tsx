@@ -4,6 +4,7 @@ import WheelSkills from './WheelSkills'
 import Welcome from './Welcome'
 import Projects from './projects/Page'
 import PlayMusic from '@/components/UIs/Playmusic'
+import { FixedPortal } from '@/components/UIs/FixedPortal'
 
 export default function HomePage() {
   return (
@@ -14,9 +15,11 @@ export default function HomePage() {
         <Projects />
         <div className="bg-base-100 min-h-dvh"></div>
       </div>
-      <div className="fixed right-0 bottom-1/5 translate-x-1/2 hover:translate-x-0 transition-all z-50">
-        <PlayMusic />
-      </div>
+      <FixedPortal>
+        <div className="fixed right-0 bottom-1/5 translate-x-1/2 hover:translate-x-0 transition-all z-50">
+          <PlayMusic />
+        </div>
+      </FixedPortal>
     </Container>
   )
 }
