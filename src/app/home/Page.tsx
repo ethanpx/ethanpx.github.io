@@ -3,7 +3,8 @@ import Container from '@/components/UIs/Container'
 import WheelSkills from './WheelSkills'
 import Welcome from './Welcome'
 import Projects from './projects/Page'
-import PlayMusic from '@/components/UIs/Playmusic'
+import PlayMusic from '@/components/UIs/PlayMusic'
+
 import { FixedPortal } from '@/components/UIs/FixedPortal'
 
 export default function HomePage() {
