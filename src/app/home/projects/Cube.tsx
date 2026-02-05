@@ -11,6 +11,7 @@ import { PROJECTS } from '@/constant/projects'
 import { useIsMobile } from '@/hooks/useIsMobile'
 import clsx from 'clsx'
 import { randomColor } from '@/helpers/utils'
+import { useInnerScroll } from '@/hooks/useInnerScroll'
 
 type CubeProps = { imgKey: string }
 type FaceProps = { label: string; t: string; src: string }
@@ -171,7 +172,9 @@ function ProjectTag({ children }: PropsWithChildren) {
   )
 }
 export default function CubeContainer() {
+  const projectRef = useRef<HTMLDivElement | null>(null)
   const [activeKey, setActiveKey] = useState(PROJECTS[1].img)
+  useInnerScroll(projectRef)
 
   const onClick = (key: string) => {
     setActiveKey(key)
@@ -180,7 +183,10 @@ export default function CubeContainer() {
   return (
     <div className="flex flex-col md:grid grid-cols-12 gap-6 md:gap-4 p-4">
       <div className="order-2 md:order-1 col-span-full md:col-span-5 h-fit">
-        <div className="w-full flex flex-row flex-nowrap md:grid grid-cols-2 gap-2 md:gap-4 overflow-x-auto">
+        <div
+          ref={projectRef}
+          className="w-full flex flex-row flex-nowrap md:grid grid-cols-2 gap-2 md:gap-4 overflow-x-auto"
+        >
           {PROJECTS.map((p, i) => (
             <div
               className={clsx(
