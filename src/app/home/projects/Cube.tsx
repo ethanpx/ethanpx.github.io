@@ -12,6 +12,7 @@ import { useIsMobile } from '@/hooks/useIsMobile'
 import clsx from 'clsx'
 import { randomColor } from '@/helpers/utils'
 import { useInnerScroll } from '@/hooks/useInnerScroll'
+import { virtualScroll } from '@/helpers/virtualScroll'
 
 type CubeProps = { imgKey: string }
 type FaceProps = { label: string; t: string; src: string }
@@ -86,6 +87,8 @@ export function Cube({ imgKey }: CubeProps) {
 
     const onPointerUp = (e: PointerEvent) => {
       draggingRef.current = false
+      virtualScroll.resume()
+
       el.style.transition = 'transform 0.6s ease'
       rotRef.current.x %= 360
       rotRef.current.y %= 360
@@ -96,6 +99,8 @@ export function Cube({ imgKey }: CubeProps) {
     }
     const onPointerDown = (e: PointerEvent) => {
       e.preventDefault()
+      virtualScroll.pause()
+
       draggingRef.current = true
       startRef.current = { x: e.clientX, y: e.clientY }
       el.style.transition = 'none'
