@@ -21,8 +21,12 @@ function HeaderLayout() {
   // }, [stickyRatio])
 
   return (
+    // <Container
+    //   className="sticky -top-0.5 border-b border-neutral z-999"
+    //   innerClassName="plus-suffix header-suffix"
+    // >
     <Container
-      className="sticky -top-0.5 border-b border-neutral z-999"
+      className="border-b border-neutral z-999"
       innerClassName="plus-suffix header-suffix"
     >
       <div ref={elmRef} className="h-container">
