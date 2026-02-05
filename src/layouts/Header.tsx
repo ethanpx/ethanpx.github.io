@@ -12,7 +12,7 @@ function HeaderLayout() {
   const parentElmRef = useRef<HTMLDivElement | null>(null)
   const elmRef = useRef<HTMLDivElement | null>(null)
   useStickyObserver(elmRef, 'header-sticky')
-  useFakeSticky(parentElmRef, -1)
+  useFakeSticky(parentElmRef, -5)
 
   return (
     <Container
