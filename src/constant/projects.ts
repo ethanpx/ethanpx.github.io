@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
     title: 'Prime Vaults',
     description:
       'Prime Vaults are smart saving accounts delivering best returns for BTC, ETH, and USD through cross-chain lending, liquidity provision, and restaking with Prime AI driving intelligent analysis for optimal performance.',
-    link: '',
+    link: 'https://primevaults.finance',
     tags: ['React.js', 'TypeScript', 'TailwindCSS'],
     img: 'prime-vault',
   },
@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
     title: 'Beraji',
     description:
       'Beraji is an engagement-driven ecosystem that boosts NFT values and on-chain activity via gamification.',
-    link: '',
+    link: 'https://beraji.onrender.com/',
     tags: ['React.js', 'TypeScript', 'TailwindCSS'],
     img: 'beraji',
   },
@@ -43,14 +43,14 @@ export const PROJECTS: Project[] = [
     title: 'Beraji Bear',
     description:
       'Break free, be playful, and find your joy again. Beraji Bears is your invitation to reconnect with the child within.',
-    link: '',
+    link: 'https://beraji-bear.onrender.com/',
     tags: ['React.js', 'TypeScript', 'TailwindCSS'],
     img: 'beraji-bear',
   },
   {
     title: 'Desig',
     description: 'The Blockchain-Agnostic Multisig Solution',
-    link: '',
+    link: 'https://desig.onrender.com/',
     tags: ['React.js', 'TypeScript', 'TailwindCSS'],
     img: 'desig',
   },
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     description:
       'Blockchain experts for hire, ready 24/7. World-class outsourcing, consulting and in-house dev team building services.',
     img: 'descartes',
-    link: '',
+    link: 'https://desnet-9nx7.onrender.com/',
     tags: ['React.js', 'Next.js', 'TypeScript', 'TailwindCSS'],
   },
 ]

@@ -13,6 +13,7 @@ import clsx from 'clsx'
 import { randomColor } from '@/helpers/utils'
 import { useInnerScroll } from '@/hooks/useInnerScroll'
 import { virtualScroll } from '@/helpers/virtualScroll'
+import { Link } from 'react-router'
 
 type CubeProps = { imgKey: string }
 type FaceProps = { label: string; t: string; src: string }
@@ -214,6 +215,15 @@ export default function CubeContainer() {
                   <ProjectTag key={t}>{t}</ProjectTag>
                 ))}
               </div>
+              {p.link && (
+                <Link
+                  className="text-[10px] text-primary underline"
+                  to={p.link}
+                  target="_blank"
+                >
+                  {p.link}
+                </Link>
+              )}
             </div>
           ))}
         </div>
