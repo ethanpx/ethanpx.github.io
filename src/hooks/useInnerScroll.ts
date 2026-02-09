@@ -1,3 +1,4 @@
+import { virtualScroll } from '@/helpers/virtualScroll'
 import { RefObject, useEffect } from 'react'
 
 export function useInnerScroll(ref: RefObject<HTMLElement | null>) {
@@ -57,6 +58,8 @@ export function useInnerScroll(ref: RefObject<HTMLElement | null>) {
     }
 
     const onTouchStart = (e: TouchEvent) => {
+      virtualScroll.pause()
+
       stopMomentum()
       lastX = e.touches[0].clientX
       lastY = e.touches[0].clientY
@@ -91,6 +94,7 @@ export function useInnerScroll(ref: RefObject<HTMLElement | null>) {
     }
 
     const onTouchEnd = () => {
+      virtualScroll.resume()
       momentum()
     }
 
